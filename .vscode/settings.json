@@ -27,6 +27,7 @@
     "APIM",
     "azurefunctions",
     "bestpractices",
-    "Lögdberg's"
-]
+    "Lögdbergs"
+  ],
+  "microsoft-sovereign-cloud.environment": "custom"
 }
