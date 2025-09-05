@@ -45,7 +45,7 @@ Microsoft follows the principle of [Coordinated Vulnerability Disclosure][def5].
 [def3]: https://microsoft.com/msrc
 [def4]: https://msrc.microsoft.com/bounty
 [def5]: https://aka.ms/opensource/security/cvd
-[def10]: https://opensource.microsoft.com/
+[def1]: https://opensource.microsoft.com/
 [microsoftGitHubLink]: https://github.com/Microsoft
 [def6]: [def7]
 [def7]: <https://aka.ms/opensource/security/msrc>
