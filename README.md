@@ -1,6 +1,6 @@
-[![Build Status](https://dev.azure.com/devdiv/DevDiv/_apis/build/status/Azure.azure-api-management-devops-resource-kit?branchName=refs%2Fpull%2F814%2Fmerge)](https://dev.azure.com/devdiv/DevDiv/_build/latest?definitionId=15827&branchName=main)
-
 # Azure API Management DevOps Resource Kit
+
+[![Build Status](https://dev.azure.com/devdiv/DevDiv/_apis/build/status/Azure.azure-api-management-devops-resource-kit?branchName=refs%2Fpull%2F814%2Fmerge)](https://dev.azure.com/devdiv/DevDiv/_build/latest?definitionId=15827&branchName=main)
 
 APIs have become mundane. They have become the de facto standard for connecting apps, data, and services. In the larger picture, APIs are driving digital transformation in organizations.
 
@@ -30,7 +30,7 @@ We believe the approach described below will address all these challenges.
 
 ## CI/CD with API Management
 
-The proposed approach is illustrated in the below picture. You can also [watch this video](https://www.youtube.com/watch?v=4Sp2Qvmg6j8) which explains the approach as well as demonstrates a sample implementation. 
+The proposed approach is illustrated in the below picture. You can also [watch this video](https://www.youtube.com/watch?v=4Sp2Qvmg6j8) which explains the approach as well as demonstrates a sample implementation.
 
 ![alt](APIM-DevOps.png)
 
@@ -38,9 +38,9 @@ In this example, there are two deployment environments: Development and Producti
 
 The key in this proposed approach is to keep all API Management configurations in Azure [Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). These templates should be kept in a source control system. We will use GIT throughout this example. As illustrated in the picture, there is a Publisher repository that contains all configurations of the Production API Management instance in a collection of templates.
 
-* **Service template**: contains all the service-level configurations of the API Management instance (e.g., pricing tier and custom domains). 
-* **Shared templates**: contain shared resources throughout an API Management instance (e.g., groups, products, loggers). 
-* **API templates**: include configurations of APIs and their sub-resources (e.g., operations, policies, diagnostics settings). 
+* **Service template**: contains all the service-level configurations of the API Management instance (e.g., pricing tier and custom domains).
+* **Shared templates**: contain shared resources throughout an API Management instance (e.g., groups, products, loggers).
+* **API templates**: include configurations of APIs and their sub-resources (e.g., operations, policies, diagnostics settings).
 * **Master template**: ties everything together by [linking](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-linked-templates) to all templates and deploy them in order. If we want to deploy all configurations to an API Management instance, we can just deploy the master template. Meanwhile, each template can also be deployed individually.
 
 API developers will fork the publisher repository to a developer repository and work on the changes for their APIs. In most cases, they will focus on the API templates for their APIs and do not need to change the shared or service templates.
@@ -51,7 +51,7 @@ We realize there are two challenges for API developers when working with Resourc
 
 * Second, for customers who have already been using API Management, another challenge is how to extract existing configurations into Resource Manager templates. For those customers, We have created another tool called [**Extractor**](./src/README.md#extractor) to help them generate templates by extracting configurations from their existing API Management instances. You can view [Supported Resources](./docs/SupportedResources/README.md) to view the supported functionality for each public APIM API version.
 
-Once API developers have finished developing and testing an API, and have generated the API template, they can submit a pull request to merge the changes to the publisher repository. API publishers can validate the pull request and make sure the changes are safe and compliant. For example, they can check if only HTTPS is allowed to communicate with the API. Most of these validations can be automated as a step in the CI/CD pipeline. Once the changes are approved and merged successfully, API publishers can choose to deploy them to the Production instance either on schedule or on demand. The deployment of the templates can be automated using [Github Actions](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), [Azure CLI](Azure-cli-example.md) or other tools. An example using Azure DevOps can be find [here](docs/AzDO-Example.md)
+Once API developers have finished developing and testing an API, and have generated the API template, they can submit a pull request to merge the changes to the publisher repository. API publishers can validate the pull request and make sure the changes are safe and compliant. For example, they can check if only HTTPS is allowed to communicate with the API. Most of these validations can be automated as a step in the CI/CD pipeline. Once the changes are approved and merged successfully, API publishers can choose to deploy them to the Production instance either on schedule or on demand. The deployment of the templates can be automated using [Github Actions](https://github.com/Azure/apimanagement-devops-samples), [Azure Pipeline](https://docs.microsoft.com/en-us/azure/devops/pipelines/?view=azure-devops), [PowerShell](https://docs.microsoft.com/en-us/azure/resource-manager/resource-group-template-deploy), [Azure CLI](Azure-cli-example.md) or other tools. An example using Azure DevOps can be find [in the Azure DevOps Example documentation](docs/AzDO-Example.md)
 
 With this approach, the deployment of API changes into API Management instances can be automated and it is easy to promote changes from one environment to another. Since different API development teams will be working on different sets of API templates and files, it prevents interference between different teams.
 
@@ -77,7 +77,7 @@ Report bugs or submit feature requests in GitHub [Issues].  Please use one of th
 
 ## Contributing
 
-This project welcomes contributions and suggestions. Guidance can be found in our [contribution guidelines]. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit https://cla.microsoft.com.
+This project welcomes contributions and suggestions. Guidance can be found in our [contribution guidelines]. Most contributions require you to agree to a Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us the rights to use your contribution. For details, visit <https://cla.microsoft.com>.
 
 When you submit a pull request, a CLA-bot will automatically determine whether you need to provide a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions provided by the bot. You will only need to do this once across all repos using our CLA.
 

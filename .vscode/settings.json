@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "type": "coercer",
+      "request": "launch",
+      "name": "Launch ArmTemplates",
+      "program": "${workspaceFolder}/src/ArmTemplates/bin/Debug/net6.0/ArmTemplates.dll",
+      "args": [
+        "--help"
+      ],
+      "preLaunchTask": "build ArmTemplates"
+    }
+  ],
+  "tasks": [
+    {
+      "label": "build ArmTemplates",
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "build",
+        "${workspaceFolder}/src/ArmTemplates/ArmTemplates.csproj"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+],
+"cSpell.words": [
+    "APIM",
+    "Lögdberg's"
+]
+}
