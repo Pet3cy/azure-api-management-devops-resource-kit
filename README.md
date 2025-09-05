@@ -89,3 +89,37 @@ For more information, see the [Code of Conduct FAQ](https://opensource.microsoft
 [Discussions]: https://github.com/Azure/azure-api-management-devops-resource-kit/discussions
 [Stack Overflow]: https://stackoverflow.com/questions/tagged/azure-api-management-devops-resource-kit
 [contribution guidelines]: https://github.com/Azure/azure-api-management-devops-resource-kit/blob/main/CONTRIBUTING.md
+
+{
+  "configurations": [
+    {
+      "type": "coreclr",
+      "request": "launch",
+      "name": "Launch .NET Project",
+      "program": "${workspaceFolder}/${input:projectDllPath}",
+      "preLaunchTask": "build .NET project"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "projectDllPath",
+      "description": "Select the DLL to debug",
+      "options": [
+        "src/ArmTemplates/bin/Debug/net6.0/ArmTemplates.dll",
+        "tests/ArmTemplates.Tests/bin/Debug/net6.0/ArmTemplates.Tests.dll"
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "label": "build .NET project",
+      "type": "shell",
+      "command": "dotnet",
+      "args": [
+        "build"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
